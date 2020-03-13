@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>Practice</title>
+		<link rel="stylesheet" href="./fstyle.css" >	
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+		<script src="./mqttfun.js" type = "text/javascript"></script>
+	</head>
+	<body onload="MQTTconnect()">
+	
+	<h1>Websockets Using JavaScript MQTT Client</h1>
+	<!--variables old <script>	</script>-->
+
+	<p id="status">Connection Status: Not Connected</p>
+	
+	<div id="myDIV">
+	  <form name = "addTopic" action="" onsubmit="return newElement()">
+		<h1 >New Topic:   </h1><input id="nTopic" type="text" name="newTopic">
+		<input type="submit" class="addBtn" value="Add Topic">
+	</form>
+	</div><br><br>
+	<hr>
+
+	<div>
+	<div class = "column">
+	<ul id="myUL" onload="attachEventHandlerToList()">
+		<li>-</li>
+		<li>brick</li>
+	</ul>
+	</div>
+	<div class = "column2">
+	<div>
+			<form name="smessage" action="" onsubmit="return send_message()">
+
+			<label for="message">Message  </label> <input type="text" name="message"><br><br>
+			<label for="PTopic">Topic   </label> <input type="text" name="Ptopic"><br><br>
+			<input type="submit" value="Submit">
+	</div>
+	<h1> Messages</h2>
+		<p id="messages"></p>
+	</div>
+	</div>
+		<script>
+		 var lis = document.getElementById("myUL").getElementsByTagName('li');
+
+    for (var i=0; i<lis.length; i++) {
+        lis[i].addEventListener('click', doStuff, false);
+    }
+
+    function doStuff() {
+		this.classList.toggle('checked');
+		//this.style.color="white";
+		//alert(this.style.color);
+		//if(this.checked){
+		mqtt.subscribe(this.innerHTML);
+		document.getElementById("messages").innerHTML += "<br><b>Subscribed to topic:"+this.innerHTML+"<br>";
+		/*}else{
+		mqtt.unsubscribe(this.innerHTML);
+		document.getElementById("messages").innerHTML += "<br><b>Unsubscribed to topic:"+this.innerHTML+"<br>";
+		}*/
+    }
+		</script>
+	</body>
+</html>

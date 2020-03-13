@@ -1,0 +1,22 @@
+{
+  "name": "vvsssmqtt",
+  "version": "1.0.0",
+  "description": "js mqtt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "mqtt"
+  ],
+  "author": "vvsssteja",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mosca": "^2.8.3",
+    "mqtt": "^3.0.0",
+    "mysql": "^2.18.1"
+  }
+}
